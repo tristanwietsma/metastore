@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png)](https://travis-ci.org/tristanwietsma/metastore)
+[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png?branch=master)](https://travis-ci.org/tristanwietsma/metastore)
 
 metastore
 =========
