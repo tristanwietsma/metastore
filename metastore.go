@@ -19,24 +19,24 @@ package metastore
 import "hash/fnv"
 
 type MetaStore struct {
-	size   uint32
+	size   uint
 	bucket []Store
 }
 
-func (m *MetaStore) Init(n uint32) {
+func (m *MetaStore) Init(n uint) {
 	m.size = n
 	m.bucket = make([]Store, n)
-	var i uint32
+	var i uint
 	for i = 0; i < n; i++ {
 		m.bucket[i].Init()
 	}
 }
 
-func (m *MetaStore) GetHasher() func([]byte) uint32 {
+func (m *MetaStore) GetHasher() func([]byte) uint {
 	h := fnv.New32()
-	hasher := func(kb []byte) uint32 {
+	hasher := func(kb []byte) uint {
 		h.Write(kb)
-		idx := h.Sum32() % m.size
+		idx := uint(h.Sum32()) % m.size
 		h.Reset()
 		return idx
 	}
