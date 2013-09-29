@@ -26,6 +26,7 @@ func TestMetaStore(t *testing.T) {
 	idx := h([]byte("key123"))
 	if idx != 334 {
 		t.Errorf("Wrong bucket index. Got %d; should be 334.", idx)
+		return
 	}
 
 	M.Bucket[idx].Set("key123", "value567")
