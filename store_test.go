@@ -18,13 +18,40 @@ package metastore
 
 import "testing"
 
+// TestGet will set a key and get back the value
 func TestGet(t *testing.T) {
 	var S Store
 	S.Init()
 	S.Set("key123", "value567")
 	value, ok := S.Get("key123")
 	if value != "value567" || !ok {
-		t.Errorf("Get failed.")
+		t.Errorf("Set-Get failed.")
 	}
 }
 
+// TestDelete will set a key, delete it, and verify it is gone
+func TestDelete(t *testing.T) {
+	var S Store
+	S.Init()
+	S.Set("key123", "value567")
+	S.Delete("key123")
+	value, ok := S.Get("key123")
+	if ok {
+		t.Errorf("Delete failed. Got back value '%s'.", value)
+	}
+}
+
+func TestSubscribe(t *testing.T) {
+	var S Store
+	S.Init()
+	recv := make(chan string)
+	S.Subscribe("key123", recv)
+	go S.Publish("key123", "value567")
+	for {
+		value := <-recv
+		if value != "value567" {
+			t.Errorf("Publish-Subscribe failed. Got back value '%s'.", value)
+		}
+		return
+	}
+}
