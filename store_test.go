@@ -41,6 +41,7 @@ func TestDelete(t *testing.T) {
 	}
 }
 
+// TestSubscribe will subscribe and publish on a key
 func TestSubscribe(t *testing.T) {
 	var S Store
 	S.Init()
