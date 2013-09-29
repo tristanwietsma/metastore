@@ -47,12 +47,10 @@ func (s *Store) Set(key, value string) {
 }
 
 // Delete removes a key from storage.
-func (s *Store) Delete(keys []string) {
+func (s *Store) Delete(key string) {
 	s.Lock()
 	defer s.Unlock()
-	for _, key := range keys {
-		delete(s.dataMap, key)
-	}
+	delete(s.dataMap, key)
 }
 
 // Publish associates a key with a value and updates subscribers.
