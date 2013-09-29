@@ -20,15 +20,15 @@ import "hash/fnv"
 
 type MetaStore struct {
 	size   uint
-	bucket []Store
+	Bucket []Store
 }
 
 func (m *MetaStore) Init(n uint) {
 	m.size = n
-	m.bucket = make([]Store, n)
+	m.Bucket = make([]Store, n)
 	var i uint
 	for i = 0; i < n; i++ {
-		m.bucket[i].Init()
+		m.Bucket[i].Init()
 	}
 }
 
