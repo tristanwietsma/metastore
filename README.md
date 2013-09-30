@@ -41,9 +41,11 @@ Subscribe to changes on a key:
         fmt.Println(<-recv)
     }
 
-Currently, each subscription requires a unique channel.
+As it stands, each subscription requires a unique channel for the receiver to know which key an update is associated with. This can introduce some overhead, but the alternative would be sending the key as well and parsing... I don't like parsing. Besides, if you really want to conserve resources, you can add an identifier to the value and do it yourself.
 
-To unsubscribe, close the channel. Store will drop the channel from the subscriber list.
+To unsubscribe, you can close the channel. Store will drop the channel from the subscriber list. If you want finer control (suppose you have multiple subscriptions on the same channel), then I've exposed the unsubscribe command:
+
+    s.Unsubscribe(key, recv)
 
 Check out this many-to-many pub/sub pattern:
 

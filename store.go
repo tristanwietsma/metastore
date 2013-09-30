@@ -61,7 +61,7 @@ func (s *Store) Publish(key, value string) {
 		for _, out := range subs {
 			defer func(o chan<- string) {
 				if r := recover(); r != nil {
-					s.unsubscribe(key, o)
+					s.Unsubscribe(key, o)
 				}
 			}(out)
 			out <- value
@@ -82,7 +82,8 @@ func (s *Store) Subscribe(key string, outgoing chan<- string) {
 	}
 }
 
-func (s *Store) unsubscribe(key string, outgoing chan<- string) {
+// Unsubscribe removes a channel from a subscriber list
+func (s *Store) Unsubscribe(key string, outgoing chan<- string) {
 	subs, hasSubs := s.fetchSubscribers(key)
 	s.Lock()
 	defer s.Unlock()
