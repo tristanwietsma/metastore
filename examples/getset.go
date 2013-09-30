@@ -33,6 +33,4 @@ func main() {
 		fmt.Printf("%s has value %s\n", key, value)
 	}
 
-
-
 }

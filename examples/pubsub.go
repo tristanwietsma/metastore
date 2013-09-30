@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 	ms "github.com/tristanwietsma/metastore"
+	"time"
 )
 
 func main() {
@@ -14,7 +14,7 @@ func main() {
 	recv := make(chan string)
 
 	go func() {
-		for i := 0;; i++ {
+		for i := 0; ; i++ {
 			time.Sleep(time.Second)
 			S.Publish("key123", fmt.Sprintf("value%d", i))
 		}

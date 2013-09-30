@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 	ms "github.com/tristanwietsma/metastore"
+	"time"
 )
 
 func main() {
@@ -18,9 +18,9 @@ func main() {
 	// create five publishers on the same key
 	for pid := 0; pid < 5; pid++ {
 		go func(pid int) {
-			for i := 0;; i++ {
+			for i := 0; ; i++ {
 				time.Sleep(time.Second)
-				val := fmt.Sprintf("%d_%d", pid,i)
+				val := fmt.Sprintf("%d_%d", pid, i)
 				S.Publish("k123", val)
 			}
 		}(pid)
