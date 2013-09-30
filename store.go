@@ -56,7 +56,7 @@ func (s *Store) Delete(key string) {
 // Publish associates a key with a value and updates subscribers.
 func (s *Store) Publish(key, value string) {
 	s.Set(key, value)
-	subs, ok := s.fetchSubscribers(key)
+	subs, ok := s.FetchSubscribers(key)
 	if ok {
 		for _, out := range subs {
 			defer func(o chan<- string) {
@@ -71,7 +71,7 @@ func (s *Store) Publish(key, value string) {
 
 // Subscribe associates an alert on an outgoing channel with a key.
 func (s *Store) Subscribe(key string, outgoing chan<- string) {
-	_, hasSubs := s.fetchSubscribers(key)
+	_, hasSubs := s.FetchSubscribers(key)
 	s.Lock()
 	defer s.Unlock()
 	if hasSubs {
@@ -84,7 +84,7 @@ func (s *Store) Subscribe(key string, outgoing chan<- string) {
 
 // Unsubscribe removes a channel from a subscriber list
 func (s *Store) Unsubscribe(key string, outgoing chan<- string) {
-	subs, hasSubs := s.fetchSubscribers(key)
+	subs, hasSubs := s.FetchSubscribers(key)
 	s.Lock()
 	defer s.Unlock()
 	if hasSubs {
@@ -99,7 +99,7 @@ func (s *Store) Unsubscribe(key string, outgoing chan<- string) {
 	}
 }
 
-func (s *Store) fetchSubscribers(key string) ([]chan<- string, bool) {
+func (s *Store) FetchSubscribers(key string) ([]chan<- string, bool) {
 	s.RLock()
 	subs, hasSubs := s.subMap[key]
 	s.RUnlock()
