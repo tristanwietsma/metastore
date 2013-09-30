@@ -43,9 +43,16 @@ Subscribe to changes on a key:
 
 As it stands, each subscription requires a unique channel for the receiver to know which key an update is associated with. This can introduce some overhead, but the alternative would be sending the key as well and parsing... I don't like parsing. Besides, if you really want to conserve resources, you can add an identifier to the value and do it yourself.
 
-To unsubscribe, you can close the channel. Store will drop the channel from the subscriber list. For finer control, call Unsubscribe:
+To unsubscribe, you can close the channel. Store will drop the channel from the subscriber list.
+
+For finer control, call Unsubscribe:
 
     S.Unsubscribe(key, recv)
+
+Want to know how many are subscriptions a key has?
+
+    nInt := S.NumSubscribers(key)
+    fmt.Printf("%s has %d subscribers\n", key, nInt)
 
 Check out this many-to-many pub/sub pattern:
 
