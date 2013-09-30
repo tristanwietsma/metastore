@@ -12,9 +12,15 @@ Store
 
 A Store is, as mentioned, a wrapper over a map. It provides safe access and tracks subscribers.
 
-Set: Assign a value to a key
-____________________________
+* Set
 
+* Get
+
+* Delete
+
+* Publish
+
+* Subscribe
 
 MetaStore
 ---------
