@@ -77,15 +77,15 @@ Check out this many-to-many pub/sub pattern:
     S.Subscribe("k123", c1)
     S.Subscribe("k123", c2)
     S.Subscribe("k123", c3)
-    var v1, v2, v3 string
+    var v string
     for {
     	select {
-    	case v1 = <-c1:
-    		fmt.Println("channel 1 got value:", v1)
-    	case v2 = <-c2:
-    		fmt.Println("channel 2 got value:", v2)
-    	case v3 = <-c3:
-    		fmt.Println("channel 3 got value:", v3)
+    	case v = <-c1:
+    		fmt.Println("channel 1 got value:", v)
+    	case v = <-c2:
+    		fmt.Println("channel 2 got value:", v)
+    	case v = <-c3:
+    		fmt.Println("channel 3 got value:", v)
     	}
     }
 
