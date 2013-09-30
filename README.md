@@ -95,5 +95,3 @@ Set a value to a key:
 
     bucketId := h([]byte(key))
     m.Bucket[bucketId].Set(key, value)
-
-See [getset.go](https://github.com/tristanwietsma/metastore/blob/master/examples/getset.go) for a basic example.
