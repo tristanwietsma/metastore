@@ -100,7 +100,7 @@ func (s *Store) Unsubscribe(key string, outgoing chan<- string) {
 }
 
 func (s *Store) NumSubscribers(key string) int {
-	subs, hasSubs := s.fetchSubscribers(key)
+	subs, _ := s.fetchSubscribers(key)
 	return len(subs)
 }
 
