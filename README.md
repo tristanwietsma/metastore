@@ -41,6 +41,10 @@ Subscribe to changes on a key:
         fmt.Println(<-recv)
     }
 
+Currently, each subscription requires a unique channel.
+
+To unsubscribe, close the channel. Store will drop the channel from the subscriber list.
+
 Check out this many-to-many pub/sub pattern:
 
     var S ms.Store
@@ -95,3 +99,4 @@ Set a value to a key:
 
     bucketId := h([]byte(key))
     m.Bucket[bucketId].Set(key, value)
+
