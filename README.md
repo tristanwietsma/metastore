@@ -41,6 +41,8 @@ Subscribe to changes on a key:
         fmt.Println(<-recv)
     }
 
+See [many2many.go](https://github.com/tristanwietsma/metastore/blob/master/examples/many2many.go) and [pubsub.go](https://github.com/tristanwietsma/metastore/blob/master/examples/pubsub.go) for working examples.
+
 MetaStore
 ---------
 
@@ -60,3 +62,5 @@ Set a value to a key:
 
     bucketId := h([]byte(key))
     m.Bucket[bucketId].Set(key, value)
+
+See [getset.go](https://github.com/tristanwietsma/metastore/blob/master/examples/getset.go) for a basic example.
