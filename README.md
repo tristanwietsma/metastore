@@ -10,17 +10,19 @@ MetaStore
 Store
 -----
 
-A Store is, as mentioned, a wrapper over a map. It provides safe access and tracks subscribers.
+A Store is, as mentioned, a wrapper over a string map. It provides safe access and tracks subscribers.
 
-* Set
+* Create a Store
 
-* Get
+* Set a value to a key
 
-* Delete
+* Get a value at a key
 
-* Publish
+* Delete a key
 
-* Subscribe
+* Publish a value to a key
+
+* Subscribe to changes on a key
 
 MetaStore
 ---------
