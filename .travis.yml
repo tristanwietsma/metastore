@@ -1,8 +1,6 @@
 language: go
 go:
         - tip
-install:
-        - go get github.com/tristanwietsma/metastore
 script: go test
 notifications:
 email: false
