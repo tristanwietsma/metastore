@@ -10,19 +10,36 @@ MetaStore
 Store
 -----
 
-A Store is, as mentioned, a wrapper over a string map. It provides safe access and tracks subscribers.
+A Store is, as mentioned, a wrapper over a string map. It provides safe access and tracks subscribers. Here is an overview:
 
 * Create a Store
 
+    var s metastore.Store
+    s.Init()
+
 * Set a value to a key
+
+    s.Set(key, value)
 
 * Get a value at a key
 
+    value, ok := s.Get(key)
+
 * Delete a key
+
+    s.Delete(key)
 
 * Publish a value to a key
 
+    s.Publish(key, value)
+
 * Subscribe to changes on a key
+
+    recv := make(chan string)
+    s.Subscribe(key, recv)
+    for {
+        fmt.Println(<-recv)
+    }
 
 MetaStore
 ---------
