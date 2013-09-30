@@ -41,7 +41,7 @@ Subscribe to changes on a key:
         fmt.Println(<-recv)
     }
 
-As an example of some of the useful junk you can do, check out this many-to-many pub/sub pattern:
+Check out this many-to-many pub/sub pattern:
 
     var S ms.Store
     S.Init()
