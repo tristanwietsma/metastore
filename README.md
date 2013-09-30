@@ -55,3 +55,8 @@ Get a hash function to determine which bucket a key goes in:
 
     h := m.GetHasher()
     bucketId := h([]byte("the key"))
+
+Set a value to a key:
+
+    bucketId := h([]byte(key))
+    m.Bucket[bucketId].Set(key, value)
