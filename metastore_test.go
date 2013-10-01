@@ -35,3 +35,11 @@ func TestMetaStore(t *testing.T) {
 		t.Errorf("Set-Get failed.")
 	}
 }
+
+func BenchmarkSet(b *testing.B) {
+	var M MetaStore
+	M.Init(1000)
+	h := M.GetHasher()
+	idx := h([]byte("key123"))
+	M.Bucket[idx].Set("key123", "value567")
+}
