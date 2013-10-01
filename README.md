@@ -109,5 +109,6 @@ Set a value to a key:
     bucketId := h([]byte(key))
     m.Bucket[bucketId].Set(key, value)
 
-MetaStore also implements all of Store's public methods, so you don't need to go to the trouble of calculating the bucket index.
+MetaStore also implements all of Store's public methods, so you don't need to go to the trouble of calculating the bucket index. In other words, this is valid code, too:
 
+    m.Set(key, value)
