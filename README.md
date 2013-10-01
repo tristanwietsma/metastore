@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png?branch=master)](https://travis-ci.org/tristanwietsma/metastore)
-
 MetaStore
 =========
+
+[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png?branch=master)](https://travis-ci.org/tristanwietsma/metastore)
 
 **Store** is an abstraction over a string map that supports get, set, delete, publish, and subscribe.
 
