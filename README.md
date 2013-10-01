@@ -112,3 +112,9 @@ Set a value to a key:
 MetaStore also implements all of Store's public methods, so you don't need to go to the trouble of calculating the bucket index. In other words, this is valid code, too:
 
     m.Set(key, value)
+    value, ok := m.Get(key)
+    m.Delete(key)
+    m.Publish(key, value)
+    m.Subscribe(key, recv)
+    m.Unsubscribe(key, recv)
+    nInt := m.NumSubscribers(key)
