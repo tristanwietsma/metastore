@@ -43,3 +43,14 @@ func BenchmarkSet(b *testing.B) {
 	idx := h([]byte("key123"))
 	M.Bucket[idx].Set("key123", "value567")
 }
+
+func TestMetaStoreFlushAll(t *testing.T) {
+	var M MetaStore
+	M.Init(1000)
+	M.Set("key123", "value567")
+	M.FlushAll()
+	_, ok := M.Get("key123")
+	if ok {
+		t.Errorf("FlushAll failed")
+	}
+}

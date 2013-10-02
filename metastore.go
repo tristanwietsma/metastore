@@ -92,7 +92,7 @@ func (m *MetaStore) NumSubscribers(key string) int {
 func (m *MetaStore) FlushAll() {
 	m.Lock()
 	defer m.Unlock()
-	for _, b := range m.Bucket {
-		b.FlushAll()
+	for i := range m.Bucket {
+		m.Bucket[i].FlushAll()
 	}
 }
