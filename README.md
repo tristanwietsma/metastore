@@ -29,6 +29,10 @@ Delete a key:
 
     s.Delete(key)
 
+Delete everything (including subscriptions):
+
+    s.FlushAll()
+
 Publish a value to a key:
 
     s.Publish(key, value)
@@ -120,3 +124,4 @@ MetaStore also implements all of Store's public methods, so you don't need to go
     m.Subscribe(key, recv)
     m.Unsubscribe(key, recv)
     nInt := m.NumSubscribers(key)
+    m.FlushAll()
