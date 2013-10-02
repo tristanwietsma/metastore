@@ -16,11 +16,15 @@ limitations under the License.
 
 package metastore
 
-import "hash/fnv"
+import (
+	"hash/fnv"
+	"sync"
+)
 
 type MetaStore struct {
 	size   uint
 	Bucket []Store
+	sync.RWMutex
 }
 
 func (m *MetaStore) Init(n uint) {
@@ -83,4 +87,12 @@ func (m *MetaStore) NumSubscribers(key string) int {
 	h := m.GetHasher()
 	bucketId := h([]byte(key))
 	return m.Bucket[bucketId].NumSubscribers(key)
+}
+
+func (m *MetaStore) FlushAll() {
+	m.Lock()
+	defer m.Unlock()
+	for _, b := range m.Bucket {
+		b.FlushAll()
+	}
 }

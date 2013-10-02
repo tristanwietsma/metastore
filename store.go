@@ -99,9 +99,17 @@ func (s *Store) Unsubscribe(key string, outgoing chan<- string) {
 	}
 }
 
+// NumSubscribers returns the number of subscribers on a key
 func (s *Store) NumSubscribers(key string) int {
 	subs, _ := s.fetchSubscribers(key)
 	return len(subs)
+}
+
+// FlushAll deletes all keys and subscribers
+func (s *Store) FlushAll() {
+	s.Lock()
+	defer s.Unlock()
+	s.Init()
 }
 
 func (s *Store) fetchSubscribers(key string) ([]chan<- string, bool) {

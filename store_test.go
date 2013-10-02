@@ -51,8 +51,20 @@ func TestSubscribe(t *testing.T) {
 	for {
 		value := <-recv
 		if value != "value567" {
-			t.Errorf("Publish-Subscribe failed. Got back value '%s'.", value)
+			t.Errorf("Pub/sub failed. Got '%s'.", value)
 		}
 		return
+	}
+}
+
+// TestFlushAll verifies that all keys are deleted
+func TestFlushAll(t *testing.T) {
+	var S Store
+	S.Init()
+	S.Set("key123", "value567")
+	S.FlushAll() // same as Init
+	value, ok := S.Get("key123")
+	if ok {
+		t.Errorf("FlushAll failed. Got back value '%s'.", value)
 	}
 }
