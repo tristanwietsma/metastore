@@ -33,6 +33,8 @@ Publish a value to a key:
 
     s.Publish(key, value)
 
+In terms of state change, Publish is equivalent to Set. However, Publish also issues updates to all subscribers, while Set does not.
+
 Subscribe to changes on a key:
 
     recv := make(chan string)
