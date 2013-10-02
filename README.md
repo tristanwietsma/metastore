@@ -33,7 +33,7 @@ Publish a value to a key:
 
     s.Publish(key, value)
 
-In terms of state change, Publish is equivalent to Set. However, Publish also updates all subscribers with the new value, while Set does not.
+In terms of state change, Publish is equivalent to Set. However, Publish also updates subscribers with the new value, while Set does not.
 
 Subscribe to changes on a key:
 
