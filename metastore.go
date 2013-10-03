@@ -37,6 +37,12 @@ func (m *MetaStore) Init(n uint) {
 }
 
 func (m *MetaStore) GetHasher() func([]byte) uint {
+
+	// degenerate metastore
+	if m.size == 1 {
+		return func(kb []byte) uint { return 0 }
+	}
+
 	h := fnv.New32()
 	hasher := func(kb []byte) uint {
 		h.Write(kb)
