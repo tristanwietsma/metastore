@@ -1,7 +1,8 @@
 MetaStore
 =========
 
-[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png?branch=master)](https://travis-ci.org/tristanwietsma/metastore)
+[![Build Status](https://travis-ci.org/tristanwietsma/metastore.png?branch=master)](https://travis-ci.org/tristanwietsma/metastore) [![GoDoc](https://godoc.org/github.com/tristanwietsma/metastore?status.svg)](http://godoc.org/github.com/tristanwietsma/metastore)
+
 
 **Store** is an abstraction over a string map that supports get, set, delete, publish, and subscribe.
 
